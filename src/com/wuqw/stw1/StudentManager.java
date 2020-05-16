@@ -4,29 +4,43 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-
+//CHECK : 2.1
+/**
+ * 
+ * @author wuqiwen
+ *
+ */
 public class StudentManager {
-	   
+	    /**
+	     * 
+	     * @param list
+	     */
 	   	public static void deleteStudent(ArrayList<Student> list) {
 	        Scanner sc = new Scanner(System.in);
 	        System.out.println("请输入你要删除信息的学生姓名：");
 	        String name = sc.nextLine();
 	        int index = -1;
-	        for (int x = 0; x < list.size(); x++) {
-	            Student s = list.get(x);
-	            if (s.getName().equals(name)) {
-	                index = x;
-	                break;
-	            }
-	        }
-	        if (index == -1) {
-	            System.out.println("你要删除的学生信息不存在！");
-	        } else {
-	            list.remove(index);
-	            System.out.println("删除成功");
+	        //CHECK : 6.1 
+	        if (list != null) {
+		        for (int x = 0; x < list.size(); x++) {
+		            Student s = list.get(x);
+		            if (s.getName().equals(name)) {
+		                index = x;
+		                break;
+		            }
+		        }
+		        if (index == -1) {
+		            System.out.println("你要删除的学生信息不存在！");
+		        } else {
+		            list.remove(index);
+		            System.out.println("删除成功");
+		        }
 	        }
 	    }
-	    
+	    /**
+	     * 
+	     * @param list
+	     */
 	    public static void addStudent(ArrayList<Student> list) {
 	        Scanner sc = new Scanner(System.in);
 	        System.out.println("请输入学生学号：");
@@ -38,10 +52,16 @@ public class StudentManager {
 	        System.out.println("请输入学生性别：");
 	        String gender1 = sc.nextLine();
 	        Boolean gender;
-	        if(gender1.equals("男"))
+//			CHECK : 3.5, 4.2 	
+//	        if(gender1.equals("男"))
+//	        	gender = true;
+//	        else
+//	        	gender = false;       
+	        if (gender1.equals("男")) {
 	        	gender = true;
-	        else
+	        } else {
 	        	gender = false;
+	        }
 	        Student s = new Student();
 	        s.setId(Integer.parseInt(id));
 	        s.setName(name);
@@ -50,7 +70,10 @@ public class StudentManager {
 	        list.add(s);
 	        System.out.println("添加成功");
 	    }
-
+	    /**
+	     * 
+	     * @param list
+	     */
 	    public static void findStudent(ArrayList<Student> list) {
 	        Scanner sc = new Scanner(System.in);
 	        System.out.println("请输入查找的学生的姓名：");
@@ -61,10 +84,16 @@ public class StudentManager {
 	            if (s.getName().equals(name)) {
 	                index = x;
 	                String gender1;
-		            if(s.getGender())
+//	    			CHECK : 3.5, 4.2 	
+//		            if(s.getGender())
+//		            	gender1 = "男";
+//		            else
+//		            	gender1 = "女";
+		            if (s.getGender()) {
 		            	gender1 = "男";
-		            else
+		            } else {
 		            	gender1 = "女";
+		            }
 		            System.out.println(s.getId() + "\t" + s.getName() + "\t" + s.getBirDate() + "\t" + gender1 );
 	                break; 
 	            }
@@ -73,7 +102,10 @@ public class StudentManager {
 	            System.out.println("学生信息不存在！");
 	        }
 	    }
-	    
+	    /**
+	     * 
+	     * @param list
+	     */
 	    private static void orderById(ArrayList<Student> list ) {
 	        if (list.size() <= 0) {
 	            System.out.println("没有学生信息，请添加!");
@@ -99,7 +131,9 @@ public class StudentManager {
 	            System.out.println(s.getId() + "\t" + s.getName() + "\t" + s.getBirDate() + "\t" + gender1 );
 	        }
 	    }
-
+	    /**
+	     * 
+	     */
 	    public static void app() {
 	        ArrayList<Student> list = new ArrayList<Student>();
 	        while (true) {
@@ -111,6 +145,7 @@ public class StudentManager {
 	            System.out.println("*       4 查找                    *");
 	            System.out.println("*       5 输出                    *");
 	            System.out.println("*       6 退出                    *");
+	            System.out.println("**********************");
 	            System.out.println("请输入你的选择：");
 	            Scanner sc = new Scanner(System.in);
 	            String input = sc.nextLine();
@@ -140,7 +175,10 @@ public class StudentManager {
 	            }
 	        }
 	    }
-
+	    /**
+	     * 
+	     * @param list
+	     */
 	    public static void updateStudent(ArrayList<Student> list) {
 	        Scanner sc = new Scanner(System.in);
 	        System.out.println("请输入你要修改的学生的姓名：");
@@ -164,10 +202,16 @@ public class StudentManager {
 	            System.out.println("请输入学生新性别：");
 	            String gender1 = sc.nextLine();
 		        Boolean gender;
-		        if(gender1.equals("男"))
+//				CHECK : 3.5, 4.2 	
+//		        if(gender1.equals("男"))
+//		        	gender = true;
+//		        else
+//		        	gender = false;	
+		        if (gender1.equals("男")) {
 		        	gender = true;
-		        else
+		        } else {
 		        	gender = false;
+		        }
 	            Student s = new Student();
 	            s.setId(Integer.parseInt(id));
 		        s.setName(name);
